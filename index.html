@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraNova | Smart Library Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-glow"></div>
+
+<header class="topbar">
+    <a class="brand" href="#">
+        <div class="brand-mark">L</div>
+        <div>
+            <strong>LibraNova</strong>
+            <span>Smart Library</span>
+        </div>
+    </a>
+    <nav>
+        <a href="#catalog">Catalog</a>
+        <a href="#borrow">Borrow & Return</a>
+        <a href="#history">History</a>
+    </nav>
+    <span class="online"><i></i> Live</span>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <span class="eyebrow">JAVA • JDBC • MYSQL • SPRING BOOT</span>
+            <h1>Your next great<br><em>chapter</em> starts here.</h1>
+            <p>A modern library workspace for discovering books, managing withdrawals, tracking due dates and earning credits for timely returns.</p>
+            <div class="hero-actions">
+                <a href="#catalog" class="primary-link">Explore collection <span>→</span></a>
+                <div class="mini-note"><b>+10</b><span>credits for on-time returns</span></div>
+            </div>
+        </div>
+        <div class="hero-art">
+            <div class="orb orb-one"></div>
+            <div class="orb orb-two"></div>
+            <div class="book-stack">
+                <div class="book b1"><span>JAVA</span></div>
+                <div class="book b2"><span>SQL</span></div>
+                <div class="book b3"><span>CODE</span></div>
+            </div>
+            <div class="floating-card"><span>✦</span> Knowledge awaits</div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat"><div class="stat-icon">◈</div><div><strong id="totalBooks">0</strong><small>Total books</small></div></div>
+        <div class="stat"><div class="stat-icon">✓</div><div><strong id="availableBooks">0</strong><small>Available now</small></div></div>
+        <div class="stat"><div class="stat-icon">♙</div><div><strong id="members">0</strong><small>Members</small></div></div>
+        <div class="stat"><div class="stat-icon">↗</div><div><strong id="activeBorrowings">0</strong><small>Currently borrowed</small></div></div>
+    </section>
+
+    <section id="borrow" class="section">
+        <div class="section-title">
+            <div><span class="eyebrow dark">LIBRARY DESK</span><h2>Borrow & return</h2></div>
+            <p>Every withdrawal gets a 7-day due date.</p>
+        </div>
+        <div class="action-grid">
+            <div class="action-card">
+                <div class="action-head"><span class="number">01</span><div><h3>Withdraw a book</h3><p>Select a member and an available title.</p></div></div>
+                <label>Member</label>
+                <select id="memberSelect"></select>
+                <label>Available book</label>
+                <select id="bookSelect"></select>
+                <button onclick="borrowBook()">Withdraw book <span>→</span></button>
+                <div id="borrowMessage" class="message"></div>
+            </div>
+            <div class="action-card return-card">
+                <div class="action-head"><span class="number">02</span><div><h3>Return a book</h3><p>Return on time to earn bonus credits.</p></div></div>
+                <label>Active borrowing</label>
+                <select id="borrowSelect"></select>
+                <div class="credit-rule"><span>✦</span><div><b>On-time reward</b><small>Return by the due date → +10 credits</small></div></div>
+                <button class="return-btn" onclick="returnBook()">Complete return <span>✓</span></button>
+                <div id="returnMessage" class="message"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="section">
+        <div class="section-title">
+            <div><span class="eyebrow dark">THE COLLECTION</span><h2>Featured books</h2></div>
+            <button class="outline-btn" onclick="loadAll()">↻ Refresh catalog</button>
+        </div>
+        <div id="bookGrid" class="book-grid"></div>
+    </section>
+
+    <section id="history" class="section history-section">
+        <div class="section-title">
+            <div><span class="eyebrow dark">ACTIVITY</span><h2>Borrowing history</h2></div>
+            <p>All withdrawals and returns are stored in MySQL.</p>
+        </div>
+        <div class="table-shell">
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>ID</th><th>Member</th><th>Book</th><th>Withdraw</th><th>Due</th><th>Return</th><th>Status</th><th>Credits</th></tr></thead>
+                    <tbody id="historyTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-brand">LibraNova</div>
+    <span>Library Management System · Java + Spring Boot + JDBC + MySQL</span>
+    <span>Built for academic demonstration</span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
